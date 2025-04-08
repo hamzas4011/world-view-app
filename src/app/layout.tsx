@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Navbar />
         
         <main className="flex-grow">
-          {children} {/* This renders each page here */}
+          {children}
         </main>
         
         <Footer />
