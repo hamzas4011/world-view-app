@@ -9,3 +9,10 @@ type Country =  {
   capital:
   population:
 }
+
+useEffect(() => {
+  fetch('/api/countries')
+    .then((res) => res.json())
+    .then((data) => setCountries(data))
+    .catch((err) => console.error('Frontend fetch error:', err))
+}, [])
