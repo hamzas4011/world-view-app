@@ -32,7 +32,7 @@ export default function HomePage() {
 
   return (
     <main className="p-6 max-w-6xl mx-auto">
-      {/* Hero Section */}
+
       <section className="text-center mb-10">
         <h1 className="text-4xl font-bold mb-2">🌍 Explore the World</h1>
         <p className="text-lg text-gray-600">
@@ -40,7 +40,6 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* Featured Countries */}
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {loading ? (
           <p className="text-center col-span-3 text-gray-500">Loading countries...</p>
