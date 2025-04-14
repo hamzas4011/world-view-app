@@ -1,46 +1,57 @@
-'use client';
-import { useState } from 'react';
-import Link from 'next/link';
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="bg-gray-800 p-4 text-white">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-xl font-bold">
-          <Link href="/">WorldView</Link>
-        </div>
+    <nav className="bg-gray-800 text-white">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        {/* Logo */}
+        <Link href="/" className="text-2xl font-bold">
+          WorldView
+        </Link>
+
+        {/* Mobile Menu Button */}
         <button
+          className="md:hidden text-2xl focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white focus:outline-none"
         >
           ☰
         </button>
+
+        {/* Menu Items */}
         <ul
           className={`${
             isOpen ? 'block' : 'hidden'
-          } md:flex space-y-2 md:space-y-0 md:space-x-4 mt-4 md:mt-0`}
+          } md:flex md:items-center md:space-x-6 space-y-2 md:space-y-0 mt-4 md:mt-0`}
         >
           <li>
-            <Link href="/" className="hover:text-gray-300">
+            <Link href="/" className="hover:text-gray-300 block">
               Home
             </Link>
           </li>
           <li>
-            <Link href="/about" className="hover:text-gray-300">
+            <Link href="/explore" className="hover:text-gray-300 block">
+              Explore
+            </Link>
+          </li>
+          <li>
+            <Link href="/about" className="hover:text-gray-300 block">
               About
             </Link>
           </li>
           <li>
-            <Link href="/contact" className="hover:text-gray-300">
+            <Link href="/contact" className="hover:text-gray-300 block">
               Contact
             </Link>
           </li>
         </ul>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
