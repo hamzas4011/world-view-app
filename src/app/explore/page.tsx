@@ -29,16 +29,11 @@ export default function ExplorePage() {
     fetchCountries()
   }, [])
 
-  // Handle live search with alias fix (e.g., "turkey" → "türkiye")
+  // Handle live search
   useEffect(() => {
-    const normalized = searchTerm.toLowerCase().trim()
-
-    const aliasFix = normalized === 'turkey' ? 'turkiye' : normalized
-
     const filteredData = countries.filter((country) =>
-      country.name.common.toLowerCase().includes(aliasFix)
+      country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
     )
-
     setFiltered(filteredData)
   }, [searchTerm, countries])
 
