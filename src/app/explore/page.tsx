@@ -11,7 +11,8 @@ type Country = {
 
 export default function ExplorePage() {
   const [countries, setCountries] = useState<Country[]>([])
-  const [loading, setLoading] = useState(true)
+  const [filtered, setFiltered] = useState<Country[]>([])
+  const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -19,25 +20,44 @@ export default function ExplorePage() {
         const res = await fetch('/api/countries')
         const data = await res.json()
         setCountries(data)
+        setFiltered(data) // Initially show all
       } catch (err) {
         console.error('Error fetching countries:', err)
-      } finally {
-        setLoading(false)
       }
     }
 
     fetchCountries()
   }, [])
 
+  // Handle live search
+  useEffect(() => {
+    const filteredData = countries.filter((country) =>
+      country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    setFiltered(filteredData)
+  }, [searchTerm, countries])
+
   return (
     <main className="p-6 max-w-6xl mx-auto">
       <h1 className="text-3xl font-bold mb-6 text-center">🌍 Explore All Countries</h1>
 
-      {loading ? (
-        <p className="text-center text-gray-500">Loading...</p>
+      {/* 🔍 Search bar */}
+      <div className="mb-6">
+        <input
+          type="text"
+          placeholder="Search by country name..."
+          className="w-full p-3 border border-gray-300 rounded shadow-sm"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
+      {/* Country cards */}
+      {filtered.length === 0 ? (
+        <p className="text-center text-gray-500">No countries found.</p>
       ) : (
         <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {countries.map((country, index) => (
+          {filtered.map((country, index) => (
             <div
               key={index}
               className="bg-white rounded-lg shadow-md p-4 hover:scale-105 transition"
