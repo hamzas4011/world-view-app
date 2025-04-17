@@ -2,49 +2,58 @@
 
 export default function HomePage() {
   return (
-    <main className="max-w-5xl mx-auto px-4 py-12">
+    <main className="min-h-screen bg-gradient-to-tr from-blue-50 to-white text-gray-800">
       {/* 🌍 Hero Section */}
-      <section className="text-center mb-16">
+      <section className="text-center px-4 py-20">
         <h1 className="text-4xl sm:text-5xl font-bold mb-4">🌍 Welcome to World View App</h1>
-        <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
-          A clean and accessible way to explore countries, their flags, languages, and regions —
-          designed with universal usability in mind.
+        <p className="text-lg sm:text-xl max-w-2xl mx-auto text-gray-700 mb-6">
+          Discover the world’s countries, cultures, flags, and facts — all in one place.
+          Built for everyone, everywhere.
         </p>
         <a
           href="/explore"
-          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
         >
           Start Exploring
         </a>
       </section>
 
-      {/* ✨ What Can You Do Section */}
-      <section className="mb-16" aria-labelledby="features-heading">
-        <h2 id="features-heading" className="text-2xl font-semibold text-center mb-10">
+      {/* ✨ Features */}
+      <section className="bg-white py-16 px-6" aria-labelledby="features-heading">
+        <h2 id="features-heading" className="text-2xl sm:text-3xl font-semibold text-center mb-12">
           ✨ What Can You Do Here?
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-6xl mx-auto">
           <div>
-            <div className="text-4xl mb-2" role="img" aria-label="Map emoji">🗺️</div>
-            <h3 className="font-semibold text-lg mb-1">Explore Countries</h3>
-            <p className="text-sm text-gray-600">Browse 250+ countries and their unique data.</p>
+            <div className="text-5xl mb-3" role="img" aria-label="Map emoji">🗺️</div>
+            <h3 className="text-lg font-bold mb-1">Explore Countries</h3>
+            <p className="text-sm text-gray-600">Browse 250+ nations and their unique data.</p>
           </div>
           <div>
-            <div className="text-4xl mb-2" role="img" aria-label="Flag emoji">🏳️</div>
-            <h3 className="font-semibold text-lg mb-1">See Flags</h3>
-            <p className="text-sm text-gray-600">View beautiful flags of each nation.</p>
+            <div className="text-5xl mb-3" role="img" aria-label="Flag emoji">🏳️</div>
+            <h3 className="text-lg font-bold mb-1">View Flags</h3>
+            <p className="text-sm text-gray-600">See the flags of the world in one place.</p>
           </div>
           <div>
-            <div className="text-4xl mb-2" role="img" aria-label="Alphabet emoji">🔤</div>
-            <h3 className="font-semibold text-lg mb-1">Learn Languages</h3>
-            <p className="text-sm text-gray-600">Find out what languages are spoken globally.</p>
+            <div className="text-5xl mb-3" role="img" aria-label="Language emoji">🔤</div>
+            <h3 className="text-lg font-bold mb-1">Discover Languages</h3>
+            <p className="text-sm text-gray-600">Learn which languages are spoken around the globe.</p>
           </div>
           <div>
-            <div className="text-4xl mb-2" role="img" aria-label="Search emoji">🔍</div>
-            <h3 className="font-semibold text-lg mb-1">Search & Filter</h3>
-            <p className="text-sm text-gray-600">Quickly find countries by name or region.</p>
+            <div className="text-5xl mb-3" role="img" aria-label="Search emoji">🔍</div>
+            <h3 className="text-lg font-bold mb-1">Smart Search</h3>
+            <p className="text-sm text-gray-600">Filter by country name or region easily.</p>
           </div>
         </div>
+      </section>
+
+      {/* 🧠 App Purpose (Optional Section) */}
+      <section className="bg-blue-50 py-12 px-6 text-center">
+        <h2 className="text-2xl font-semibold mb-4">Why World View?</h2>
+        <p className="text-gray-700 max-w-2xl mx-auto">
+          World View is a simple, accessible, and beautiful way to learn more about the countries we share our planet with.
+          Whether you're curious, researching, or learning — this is your global starting point.
+        </p>
       </section>
     </main>
   )
