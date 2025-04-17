@@ -1,67 +1,60 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
-type Country = {
-  name: { common: string }
-  flags: { png: string }
-  region: string
-  capital?: string[]
-}
-
 export default function HomePage() {
-  const [countries, setCountries] = useState<Country[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        const res = await fetch('/api/countries')
-        const data = await res.json()
-        const sample = data.slice(0, 6) // Show only 6 countries for homepage
-        setCountries(sample)
-      } catch (error) {
-        console.error('Failed to fetch countries:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchCountries()
-  }, [])
-
   return (
-    <main className="p-6 max-w-6xl mx-auto">
-
-      <section className="text-center mb-10">
-        <h1 className="text-4xl font-bold mb-2">🌍 Explore the World</h1>
-        <p className="text-lg text-gray-600">
-          Discover countries, flags, and regions at a glance.
+    <main className="max-w-5xl mx-auto px-4 py-12">
+      {/* 🌍 Hero Section */}
+      <section className="text-center mb-16">
+        <h1 className="text-4xl sm:text-5xl font-bold mb-4">🌍 Welcome to World View App</h1>
+        <p className="text-lg text-gray-600 mb-6">
+          Discover the world’s countries, cultures, languages, and more — all in one place.
         </p>
+        <a
+          href="/explore"
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 transition"
+        >
+          Start Exploring
+        </a>
       </section>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {loading ? (
-          <p className="text-center col-span-3 text-gray-500">Loading countries...</p>
-        ) : (
-          countries.map((country, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-lg shadow-md p-4 hover:scale-105 transition"
-            >
-              <img
-                src={country.flags.png}
-                alt={country.name.common}
-                className="w-full h-40 object-cover rounded"
-              />
-              <h2 className="text-xl font-semibold mt-2">{country.name.common}</h2>
-              <p className="text-sm text-gray-500">
-                Capital: {country.capital?.[0] || 'N/A'}
-              </p>
-              <p className="text-sm text-gray-500">Region: {country.region}</p>
-            </div>
-          ))
-        )}
+      {/* ✨ What Can You Do Section */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold text-center mb-10">✨ What Can You Do Here?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <div className="text-4xl mb-2">🗺️</div>
+            <h3 className="font-semibold text-lg mb-1">Explore Countries</h3>
+            <p className="text-sm text-gray-600">Browse 250+ countries and their unique data.</p>
+          </div>
+          <div>
+            <div className="text-4xl mb-2">🏳️</div>
+            <h3 className="font-semibold text-lg mb-1">See Flags</h3>
+            <p className="text-sm text-gray-600">View beautiful flags of each nation.</p>
+          </div>
+          <div>
+            <div className="text-4xl mb-2">🔤</div>
+            <h3 className="font-semibold text-lg mb-1">Learn Languages</h3>
+            <p className="text-sm text-gray-600">Find out what languages are spoken around the globe.</p>
+          </div>
+          <div>
+            <div className="text-4xl mb-2">🔍</div>
+            <h3 className="font-semibold text-lg mb-1">Search & Filter</h3>
+            <p className="text-sm text-gray-600">Quickly find countries by name or region.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 👨‍💻 Developer Note */}
+      <section className="text-center text-gray-500 text-sm">
+        Built with 💙 by <span className="font-semibold text-gray-700">Hamza Simsek</span>.  
+        Open-source & educational project.  
+        <a
+          href="https://github.com/YOUR-GITHUB"
+          target="_blank"
+          className="text-blue-600 hover:underline ml-1"
+        >
+          View on GitHub →
+        </a>
       </section>
     </main>
   )
