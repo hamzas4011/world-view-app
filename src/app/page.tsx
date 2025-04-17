@@ -4,7 +4,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-gradient-to-tr from-blue-50 to-white text-gray-800">
       {/* 🌍 Hero Section */}
-      <section className="text-center px-4 py-20">
+      <section className="text-center px-4 pt-20 pb-16">
         <h1 className="text-4xl sm:text-5xl font-bold mb-4">🌍 Welcome to World View App</h1>
         <p className="text-lg sm:text-xl max-w-2xl mx-auto text-gray-700 mb-6">
           Discover the world’s countries, cultures, flags, and facts — all in one place.
@@ -18,7 +18,7 @@ export default function HomePage() {
         </a>
       </section>
 
-      {/* ✨ Features */}
+      {/* ✨ What Can You Do Section */}
       <section className="bg-white py-16 px-6" aria-labelledby="features-heading">
         <h2 id="features-heading" className="text-2xl sm:text-3xl font-semibold text-center mb-12">
           ✨ What Can You Do Here?
@@ -47,10 +47,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 🧠 App Purpose (Optional Section) */}
-      <section className="bg-blue-50 py-12 px-6 text-center">
+      {/* 🧠 Why World View Section — WITH NO BOTTOM MARGIN */}
+      <section className="bg-blue-50 px-6 pt-12 pb-0 text-center">
         <h2 className="text-2xl font-semibold mb-4">Why World View?</h2>
-        <p className="text-gray-700 max-w-2xl mx-auto">
+        <p className="text-gray-700 max-w-2xl mx-auto mb-0">
           World View is a simple, accessible, and beautiful way to learn more about the countries we share our planet with.
           Whether you're curious, researching, or learning — this is your global starting point.
         </p>
