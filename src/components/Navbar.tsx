@@ -14,15 +14,16 @@ const Navbar = () => {
           WorldView
         </Link>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle */}
         <button
           className="md:hidden text-2xl focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle navigation menu"
         >
           ☰
         </button>
 
-        {/* Menu Items */}
+        {/* Navigation Links */}
         <ul
           className={`${
             isOpen ? 'block' : 'hidden'
@@ -39,8 +40,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/about" className="hover:text-gray-300 block">
-              About
+            <Link href="/news" className="hover:text-gray-300 block">
+              News
             </Link>
           </li>
         </ul>
