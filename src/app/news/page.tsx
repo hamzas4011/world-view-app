@@ -44,10 +44,11 @@ export default function NewsPage() {
             >
               {/* Unsplash Image */}
               <img
-                src={`https://source.unsplash.com/random/400x300/?world,news,people,travel,global,culture&sig=${index}`}
-                alt="News image"
-                className="w-full h-48 object-cover"
-              />
+  src={`https://source.unsplash.com/featured/400x300?world,news,people,travel,global,culture&sig=${index}`}
+  alt="News image"
+  className="w-full h-48 object-cover"
+/>
+
 
               <div className="p-4 flex flex-col justify-between flex-grow">
                 <a
