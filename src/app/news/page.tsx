@@ -37,15 +37,17 @@ export default function NewsPage() {
         <p className="text-center text-gray-500">Loading news...</p>
       ) : (
         <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {articles.slice(0, 15).map((article, index) => (
+          {articles.map((article, index) => (
             <article
               key={index}
               className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden flex flex-col"
             >
-              {/* Placeholder image */}
-              <div className="bg-gray-200 h-48 w-full flex items-center justify-center text-gray-400 text-sm">
-                <span role="img" aria-label="News image">🖼️</span> Image Placeholder
-              </div>
+              {/* Unsplash Image */}
+              <img
+                src={`https://source.unsplash.com/random/400x300/?world,news,people,travel,global,culture&sig=${index}`}
+                alt="News image"
+                className="w-full h-48 object-cover"
+              />
 
               <div className="p-4 flex flex-col justify-between flex-grow">
                 <a
