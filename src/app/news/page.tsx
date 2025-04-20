@@ -30,29 +30,43 @@ export default function NewsPage() {
   }, [])
 
   return (
-    <main className="max-w-5xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">📰 World News</h1>
+    <main className="max-w-6xl mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold text-center mb-10">📰 World News</h1>
 
       {loading ? (
         <p className="text-center text-gray-500">Loading news...</p>
       ) : (
-        <ul className="space-y-6">
+        <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {articles.map((article, index) => (
-            <li key={index} className="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
-              <a
-                href={article.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xl font-semibold text-blue-700 hover:underline"
-              >
-                {article.title}
-              </a>
-              <p className="text-sm text-gray-500 mt-1">
-                {new Date(article.pubDate).toLocaleString()} — {article.source}
-              </p>
-            </li>
+            <article
+              key={index}
+              className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden flex flex-col"
+            >
+              {/* Placeholder image */}
+              <div className="bg-gray-200 h-48 w-full flex items-center justify-center text-gray-400 text-sm">
+                <span role="img" aria-label="News image">🖼️</span> Image Placeholder
+              </div>
+
+              <div className="p-4 flex flex-col justify-between flex-grow">
+                <a
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg font-semibold text-blue-700 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400"
+                >
+                  {article.title}
+                </a>
+                <p className="text-sm text-gray-500 mt-2">
+                  {new Date(article.pubDate).toLocaleString('en-GB', {
+                    dateStyle: 'medium',
+                    timeStyle: 'short',
+                  })}
+                </p>
+                <p className="text-sm text-gray-400 mt-auto pt-4">Source: {article.source}</p>
+              </div>
+            </article>
           ))}
-        </ul>
+        </section>
       )}
     </main>
   )
