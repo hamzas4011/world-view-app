@@ -37,7 +37,7 @@ export default function NewsPage() {
         <p className="text-center text-gray-500">Loading news...</p>
       ) : (
         <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {articles.map((article, index) => (
+          {articles.slice(0, 16).map((article, index) => (
             <article
               key={index}
               className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden flex flex-col"
