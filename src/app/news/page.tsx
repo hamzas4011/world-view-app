@@ -42,13 +42,12 @@ export default function NewsPage() {
               key={index}
               className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden flex flex-col"
             >
-              {/* Unsplash Image */}
+              {/* Always-working image from Lorem Picsum */}
               <img
-  src={`https://source.unsplash.com/featured/400x300?world,news,people,travel,global,culture&sig=${index}`}
-  alt="News image"
-  className="w-full h-48 object-cover"
-/>
-
+                src={`https://picsum.photos/seed/news${index}/400/300`}
+                alt="News image"
+                className="w-full h-48 object-cover"
+              />
 
               <div className="p-4 flex flex-col justify-between flex-grow">
                 <a
