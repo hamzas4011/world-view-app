@@ -10,15 +10,16 @@ export async function GET() {
     }
 
     const xml = await response.text()
-
     const parser = new XMLParser()
     const data = parser.parse(xml)
 
-    const articles = data.rss.channel.item.map((item: any) => ({
+    const items = data?.rss?.channel?.item || []
+
+    const articles = items.slice(0, 16).map((item: any) => ({
       title: item.title,
       link: item.link,
       pubDate: item.pubDate,
-      source: 'BBC News'
+      source: 'BBC News',
     }))
 
     return Response.json(articles)
