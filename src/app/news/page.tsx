@@ -42,7 +42,6 @@ export default function NewsPage() {
               key={index}
               className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden flex flex-col"
             >
-              {/* Slightly more consistent image set using same seed prefix */}
               <img
                 src={`https://picsum.photos/seed/worldnews${index}/400/300`}
                 alt="News image"
