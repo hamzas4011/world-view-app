@@ -18,7 +18,7 @@ export default function NewsPage() {
       try {
         const res = await fetch('/api/news')
         const data = await res.json()
-        setArticles(data)
+        setArticles(data.slice(0, 15)) // ✅ Limit to 15 articles
       } catch (error) {
         console.error('Failed to load news:', error)
       } finally {
@@ -42,9 +42,9 @@ export default function NewsPage() {
               key={index}
               className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden flex flex-col"
             >
-              {/* Always-working image from Lorem Picsum */}
+              {/* Slightly more consistent image set using same seed prefix */}
               <img
-                src={`https://picsum.photos/seed/news${index}/400/300`}
+                src={`https://picsum.photos/seed/worldnews${index}/400/300`}
                 alt="News image"
                 className="w-full h-48 object-cover"
               />
