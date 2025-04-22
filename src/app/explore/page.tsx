@@ -20,8 +20,14 @@ export default function ExplorePage() {
       try {
         const res = await fetch('/api/countries')
         const data = await res.json()
-        setCountries(data)
-        setFiltered(data) // Initially show all
+
+        // ✅ Sort alphabetically by common name
+        const sortedData = data.sort((a: Country, b: Country) =>
+          a.name.common.localeCompare(b.name.common)
+        )
+
+        setCountries(sortedData)
+        setFiltered(sortedData) // Initially show all
       } catch (err) {
         console.error('Error fetching countries:', err)
       }
@@ -74,7 +80,6 @@ export default function ExplorePage() {
               </p>
               <p className="text-sm text-gray-500 mb-4">Region: {country.region}</p>
 
-              {/* 🔗 Improved Universal Design Button */}
               <Link
                 href={`/explore/${country.name.common.toLowerCase()}`}
                 className="mt-auto inline-block text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition"
