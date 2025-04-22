@@ -7,6 +7,7 @@ type CountryData = {
   region: string
   subregion?: string
   population: number
+  area: number
   languages?: Record<string, string>
   currencies?: Record<string, { name: string; symbol: string }>
   timezones: string[]
@@ -79,6 +80,10 @@ export default async function CountryPage({ params }: Props) {
         <div className="sm:col-span-2">
           <h2 className="font-semibold text-lg mb-1">Timezones</h2>
           <p>{country.timezones.join(', ')}</p>
+        </div>
+        <div className="sm:col-span-2">
+          <h2 className="font-semibold text-lg mb-1">Area</h2>
+          <p>{country.area.toLocaleString()} km²</p>
         </div>
       </div>
     </main>
