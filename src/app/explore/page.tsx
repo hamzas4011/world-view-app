@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 type Country = {
   name: { common: string }
@@ -60,7 +61,7 @@ export default function ExplorePage() {
           {filtered.map((country, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-md p-4 hover:scale-105 transition"
+              className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between"
             >
               <img
                 src={country.flags.png}
@@ -71,7 +72,15 @@ export default function ExplorePage() {
               <p className="text-sm text-gray-500">
                 Capital: {country.capital?.[0] || 'N/A'}
               </p>
-              <p className="text-sm text-gray-500">Region: {country.region}</p>
+              <p className="text-sm text-gray-500 mb-4">Region: {country.region}</p>
+
+              {/* 🔗 Read More Button */}
+              <Link
+                href={`/explore/${country.name.common.toLowerCase()}`}
+                className="mt-auto text-blue-600 hover:underline font-medium"
+              >
+                Read more →
+              </Link>
             </div>
           ))}
         </section>
