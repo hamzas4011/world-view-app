@@ -10,7 +10,6 @@ type CountryData = {
   languages?: Record<string, string>
   currencies?: Record<string, { name: string; symbol: string }>
   timezones: string[]
-  maps: { googleMaps: string }
 }
 
 type Props = {
@@ -19,8 +18,6 @@ type Props = {
 
 export default async function CountryPage({ params }: Props) {
   const countryName = params.country
-
-  // ✅ Use relative path (safe for local dev)
   const res = await fetch(`http://localhost:3000/api/countries/${countryName}`)
 
   if (!res.ok) return notFound()
@@ -28,51 +25,61 @@ export default async function CountryPage({ params }: Props) {
   const country: CountryData = await res.json()
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-center mb-8">
-        {country.name.common} 🇺🇳
-      </h1>
+    <main className="max-w-5xl mx-auto px-6 py-12">
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-extrabold">{country.name.common}</h1>
+        <p className="text-gray-600 text-lg mt-2">{country.name.official}</p>
+      </div>
 
-      <div className="bg-white rounded-xl shadow-md p-6 flex flex-col gap-4">
+      {/* Flag section */}
+      <div className="flex justify-center mb-10">
         <img
           src={country.flags.png}
           alt={country.flags.alt || `${country.name.common} flag`}
-          className="w-full h-48 object-cover rounded"
+          className="w-full max-w-md rounded-xl border shadow-sm"
         />
+      </div>
 
-        <ul className="space-y-2 text-gray-700">
-          <li><strong>Official Name:</strong> {country.name.official}</li>
-          <li><strong>Capital:</strong> {country.capital?.join(', ') || 'N/A'}</li>
-          <li><strong>Region:</strong> {country.region}</li>
-          <li><strong>Subregion:</strong> {country.subregion || 'N/A'}</li>
-          <li><strong>Population:</strong> {country.population.toLocaleString()}</li>
-          <li>
-            <strong>Languages:</strong>{' '}
+      {/* Info section */}
+      <div className="bg-white rounded-xl shadow-md p-6 grid gap-4 sm:grid-cols-2 text-gray-800">
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Capital</h2>
+          <p>{country.capital?.join(', ') || 'N/A'}</p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Region</h2>
+          <p>{country.region}</p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Subregion</h2>
+          <p>{country.subregion || 'N/A'}</p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Population</h2>
+          <p>{country.population.toLocaleString()}</p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Languages</h2>
+          <p>
             {country.languages
               ? Object.values(country.languages).join(', ')
               : 'N/A'}
-          </li>
-          <li>
-            <strong>Currencies:</strong>{' '}
+          </p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Currencies</h2>
+          <p>
             {country.currencies
               ? Object.values(country.currencies)
                   .map((c) => `${c.name} (${c.symbol})`)
                   .join(', ')
               : 'N/A'}
-          </li>
-          <li><strong>Timezones:</strong> {country.timezones.join(', ')}</li>
-          <li>
-            <strong>Google Maps:</strong>{' '}
-            <a
-              href={country.maps.googleMaps}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              View Map
-            </a>
-          </li>
-        </ul>
+          </p>
+        </div>
+        <div className="sm:col-span-2">
+          <h2 className="font-semibold text-lg mb-1">Timezones</h2>
+          <p>{country.timezones.join(', ')}</p>
+        </div>
       </div>
     </main>
   )
