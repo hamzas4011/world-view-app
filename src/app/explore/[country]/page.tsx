@@ -20,7 +20,9 @@ type Props = {
 export default async function CountryPage({ params }: Props) {
   const countryName = params.country
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/countries/${countryName}`)
+  // ✅ Use relative path (safe for local dev)
+  const res = await fetch(`http://localhost:3000/api/countries/${countryName}`)
+
   if (!res.ok) return notFound()
 
   const country: CountryData = await res.json()
