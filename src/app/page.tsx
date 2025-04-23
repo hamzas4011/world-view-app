@@ -48,7 +48,7 @@ export default function HomePage() {
       </section>
 
       {/* 🧠 Why World View Section — WITH NO BOTTOM MARGIN */}
-      <section className="bg-blue-50 px-6 pt-12 pb-0 text-center">
+      <section className="bg-blue-50 px-6 pt-12 pb-8 text-center">
         <h2 className="text-2xl font-semibold mb-4">Why World View?</h2>
         <p className="text-gray-700 max-w-2xl mx-auto mb-0">
           World View is a simple, accessible, and beautiful way to learn more about the countries we share our planet with.

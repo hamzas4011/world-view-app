@@ -27,12 +27,13 @@ export default async function CountryPage({ params }: Props) {
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-12">
+      {/* Header */}
       <div className="text-center mb-10">
         <h1 className="text-4xl font-extrabold">{country.name.common}</h1>
         <p className="text-gray-600 text-lg mt-2">{country.name.official}</p>
       </div>
 
-      {/* Flag section */}
+      {/* Flag */}
       <div className="flex justify-center mb-10">
         <img
           src={country.flags.png}
@@ -41,7 +42,7 @@ export default async function CountryPage({ params }: Props) {
         />
       </div>
 
-      {/* Info section */}
+      {/* Country Info Grid */}
       <div className="bg-white rounded-xl shadow-md p-6 grid gap-4 sm:grid-cols-2 text-gray-800">
         <div>
           <h2 className="font-semibold text-lg mb-1">Capital</h2>
@@ -58,6 +59,10 @@ export default async function CountryPage({ params }: Props) {
         <div>
           <h2 className="font-semibold text-lg mb-1">Population</h2>
           <p>{country.population.toLocaleString()}</p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Area</h2>
+          <p>{country.area.toLocaleString()} km²</p>
         </div>
         <div>
           <h2 className="font-semibold text-lg mb-1">Languages</h2>
@@ -77,13 +82,9 @@ export default async function CountryPage({ params }: Props) {
               : 'N/A'}
           </p>
         </div>
-        <div className="sm:col-span-2">
+        <div>
           <h2 className="font-semibold text-lg mb-1">Timezones</h2>
           <p>{country.timezones.join(', ')}</p>
-        </div>
-        <div className="sm:col-span-2">
-          <h2 className="font-semibold text-lg mb-1">Area</h2>
-          <p>{country.area.toLocaleString()} km²</p>
         </div>
       </div>
     </main>
