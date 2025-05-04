@@ -15,7 +15,7 @@ export async function GET() {
 
     const items = data?.rss?.channel?.item || []
 
-    const articles = items.slice(0, 15).map((item: any) => ({
+    const articles = items.slice(0, 15).map((item: Record<string, any>) => ({
       title: item.title,
       link: item.link,
       pubDate: item.pubDate,
