@@ -21,7 +21,7 @@ export async function GET() {
       pubDate: item.pubDate,
       source: 'BBC News',
     }))
-  
+
     return Response.json(articles)
   } catch (error) {
     console.error('RSS Fetch Error:', error)
