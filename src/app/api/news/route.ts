@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server'
 import { XMLParser } from 'fast-xml-parser'
 
 export async function GET() {
@@ -6,7 +7,7 @@ export async function GET() {
     const response = await fetch(rssUrl)
 
     if (!response.ok) {
-      return Response.json({ error: 'Failed to fetch RSS feed' }, { status: 500 })
+      return NextResponse.json({ error: 'Failed to fetch RSS feed' }, { status: 500 })
     }
 
     const xml = await response.text()
@@ -16,16 +17,15 @@ export async function GET() {
     const items: Record<string, any>[] = data.rss.channel.item
 
     const articles = items.slice(0, 15).map((item) => ({
-     title: item.title,
-     link: item.link,
-    pubDate: item.pubDate,
-    source: 'BBC News',
-   }))
+      title: item.title,
+      link: item.link,
+      pubDate: item.pubDate,
+      source: 'BBC News',
+    }))
 
-
-    return Response.json(articles)
+    return NextResponse.json(articles)
   } catch (error) {
     console.error('RSS Fetch Error:', error)
-    return Response.json({ error: 'Server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }
 }
