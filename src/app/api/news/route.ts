@@ -13,15 +13,15 @@ export async function GET() {
     const parser = new XMLParser()
     const data = parser.parse(xml)
 
-    const items = data?.rss?.channel?.item || []
+    const items: Record<string, any>[] = data.rss.channel.item
 
-    const articles = items.slice(0, 15).map((item: Record<string, any>) => ({
+    const articles = items.slice(0, 15).map((item) => ({
       title: item.title,
       link: item.link,
       pubDate: item.pubDate,
       source: 'BBC News',
     }))
-
+  
     return Response.json(articles)
   } catch (error) {
     console.error('RSS Fetch Error:', error)
