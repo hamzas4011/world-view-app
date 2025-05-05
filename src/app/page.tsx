@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-gradient-to-tr from-blue-50 to-white text-gray-800">
@@ -10,12 +12,12 @@ export default function HomePage() {
           Discover the world’s countries, cultures, flags, and facts — all in one place.
           Built for everyone, everywhere.
         </p>
-        <a
+        <Link
           href="/explore"
           className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
         >
           Start Exploring
-        </a>
+        </Link>
       </section>
 
       {/* ✨ What Can You Do Section */}
@@ -47,7 +49,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 🧠 Why World View Section — WITH NO BOTTOM MARGIN */}
+      {/* 🧠 Why World View Section */}
       <section className="bg-blue-50 px-6 pt-12 pb-8 text-center">
         <h2 className="text-2xl font-semibold mb-4">Why World View?</h2>
         <p className="text-gray-700 max-w-2xl mx-auto mb-0">
