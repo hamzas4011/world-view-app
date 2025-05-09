@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 type CountryData = {
@@ -28,14 +27,6 @@ export default async function CountryPage({ params }: Props) {
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-12">
-      {/* Back Link */}
-      <Link
-        href="/explore"
-        className="inline-block mb-6 text-blue-600 underline hover:text-blue-800"
-      >
-        ← Back to Explore
-      </Link>
-
       {/* Header */}
       <div className="text-center mb-10">
         <h1 className="text-4xl font-extrabold">{country.name.common}</h1>
