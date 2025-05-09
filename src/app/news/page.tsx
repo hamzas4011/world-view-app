@@ -9,22 +9,58 @@ type Article = {
 
 const mockArticles: Article[] = [
   {
-    title: 'World Peace Declared Across All Nations 🌍',
+    title: '🌍 Earth Day Celebrated by Billions',
     link: '#',
-    pubDate: '2025-05-01T12:00:00Z',
-    source: 'Global Times',
+    pubDate: '2025-04-22T09:00:00Z',
+    source: 'WorldView News',
   },
   {
-    title: 'Ocean Cities Float Successfully in the Pacific 🌊',
+    title: '🚀 Space Elevator Completed in Asia',
     link: '#',
-    pubDate: '2025-05-02T08:30:00Z',
-    source: 'Sky News',
+    pubDate: '2025-04-18T14:30:00Z',
+    source: 'Orbital Times',
   },
   {
-    title: 'Mars Colonists Celebrate First Anniversary 🚀',
+    title: '🤖 AI Appointed as Minister of Technology',
     link: '#',
-    pubDate: '2025-05-01T20:00:00Z',
-    source: 'Red Planet Daily',
+    pubDate: '2025-04-20T12:15:00Z',
+    source: 'Future Herald',
+  },
+  {
+    title: '🐳 Underwater Cities Begin Construction',
+    link: '#',
+    pubDate: '2025-04-25T11:00:00Z',
+    source: 'Oceanic Post',
+  },
+  {
+    title: '⚡ Global Green Energy Hits 95%',
+    link: '#',
+    pubDate: '2025-04-24T10:00:00Z',
+    source: 'Eco News',
+  },
+  {
+    title: '🏝️ First Nation Formed on Floating Island',
+    link: '#',
+    pubDate: '2025-04-21T17:45:00Z',
+    source: 'Island Tribune',
+  },
+  {
+    title: '🛰️ Moon Internet Goes Online for All',
+    link: '#',
+    pubDate: '2025-04-23T08:00:00Z',
+    source: 'Lunar Daily',
+  },
+  {
+    title: '🎮 World Gaming Olympics Announced',
+    link: '#',
+    pubDate: '2025-04-19T15:00:00Z',
+    source: 'Pixel Press',
+  },
+  {
+    title: '🚄 Maglev Train Crosses Continents in 6 Hours',
+    link: '#',
+    pubDate: '2025-04-26T13:20:00Z',
+    source: 'Transit Times',
   },
 ]
 
@@ -39,8 +75,9 @@ export default function NewsPage() {
             key={index}
             className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden flex flex-col"
           >
+            {/* Placeholder image */}
             <div className="bg-gray-200 h-48 w-full flex items-center justify-center text-gray-400 text-sm">
-              🖼️ Fantasy Image Placeholder
+              🖼️ News Image Placeholder
             </div>
 
             <div className="p-4 flex flex-col justify-between flex-grow">
