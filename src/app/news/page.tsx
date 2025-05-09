@@ -8,47 +8,47 @@ type Article = {
 
 const mockArticles: Article[] = [
   {
-    title: '🌍 Earth Day Celebrated by Billions',
+    title: 'Earth Day Celebrated Globally',
     link: '#',
     pubDate: '2025-04-22T09:00:00Z',
   },
   {
-    title: '🚀 Space Elevator Completed in Asia',
+    title: 'Space Elevator Opens in Asia',
     link: '#',
     pubDate: '2025-04-18T14:30:00Z',
   },
   {
-    title: '🤖 AI Appointed as Minister of Technology',
+    title: 'AI Becomes Tech Minister',
     link: '#',
     pubDate: '2025-04-20T12:15:00Z',
   },
   {
-    title: '🐳 Underwater Cities Begin Construction',
+    title: 'Underwater Cities Announced',
     link: '#',
     pubDate: '2025-04-25T11:00:00Z',
   },
   {
-    title: '⚡ Global Green Energy Hits 95%',
+    title: 'Green Energy Hits 95%',
     link: '#',
     pubDate: '2025-04-24T10:00:00Z',
   },
   {
-    title: '🏝️ First Nation Formed on Floating Island',
+    title: 'UN Recognizes Island Nation',
     link: '#',
     pubDate: '2025-04-21T17:45:00Z',
   },
   {
-    title: '🛰️ Moon Internet Goes Online for All',
+    title: 'Moon Internet Now Live',
     link: '#',
     pubDate: '2025-04-23T08:00:00Z',
   },
   {
-    title: '🎮 World Gaming Olympics Announced',
+    title: 'Global Gaming Event Announced',
     link: '#',
     pubDate: '2025-04-19T15:00:00Z',
   },
   {
-    title: '🚄 Maglev Train Crosses Continents in 6 Hours',
+    title: 'Maglev Train Breaks Record',
     link: '#',
     pubDate: '2025-04-26T13:20:00Z',
   },
@@ -63,13 +63,14 @@ export default function NewsPage() {
         {mockArticles.map((article, index) => (
           <article
             key={index}
-            className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden"
+            className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden flex flex-col"
           >
+            {/* Image placeholder */}
             <div className="bg-gray-200 h-48 flex items-center justify-center text-gray-400 text-sm">
-              🖼️ Fantasy News Image
+              🖼️ News Image
             </div>
 
-            <div className="p-4">
+            <div className="p-4 flex flex-col flex-grow">
               <a
                 href={article.link}
                 target="_blank"
