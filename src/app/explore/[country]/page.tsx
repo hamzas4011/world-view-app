@@ -19,7 +19,7 @@ type Props = {
 
 export default async function CountryPage({ params }: Props) {
   const countryName = params.country
-  const res = await fetch(`http://localhost:3000/api/countries/${countryName}`)
+  const res = await fetch(`http://localhost:3000/api/countries/name/${countryName}`)
 
   if (!res.ok) return notFound()
 
