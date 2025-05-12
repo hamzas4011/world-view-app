@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 type CountryData = {
@@ -19,7 +20,9 @@ type Props = {
 
 export default async function CountryPage({ params }: Props) {
   const countryName = params.country
-  const res = await fetch(`http://localhost:3000/api/countries/name/${countryName}`)
+  const res = await fetch(`http://localhost:3000/api/countries/${countryName}`, {
+    cache: 'no-store',
+  })
 
   if (!res.ok) return notFound()
 
@@ -27,13 +30,18 @@ export default async function CountryPage({ params }: Props) {
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-12">
-      {/* Header */}
+      <Link
+        href="/explore"
+        className="inline-block mb-6 text-blue-600 underline hover:text-blue-800"
+      >
+        ← Back to Explore
+      </Link>
+
       <div className="text-center mb-10">
         <h1 className="text-4xl font-extrabold">{country.name.common}</h1>
         <p className="text-gray-600 text-lg mt-2">{country.name.official}</p>
       </div>
 
-      {/* Flag */}
       <div className="flex justify-center mb-10">
         <img
           src={country.flags.png}
@@ -42,7 +50,6 @@ export default async function CountryPage({ params }: Props) {
         />
       </div>
 
-      {/* Country Info Grid */}
       <div className="bg-white rounded-xl shadow-md p-6 grid gap-4 sm:grid-cols-2 text-gray-800">
         <div>
           <h2 className="font-semibold text-lg mb-1">Capital</h2>
