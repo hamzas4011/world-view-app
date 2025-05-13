@@ -20,13 +20,14 @@ type Props = {
 
 export default async function CountryPage({ params }: Props) {
   const countryName = params.country
-  const res = await fetch(`http://localhost:3000/api/countries/${countryName}`, {
+  const res = await fetch(`https://restcountries.com/v3.1/name/${countryName}`, {
     cache: 'no-store',
   })
 
   if (!res.ok) return notFound()
 
-  const country: CountryData = await res.json()
+  const data = await res.json()
+  const country: CountryData = data[0] // use first match
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-12">
