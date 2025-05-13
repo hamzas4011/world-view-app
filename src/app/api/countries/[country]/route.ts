@@ -2,9 +2,13 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { country: string } }
-): Promise<NextResponse> {
-  const country = params.country
+  context: any
+) {
+  const country = context?.params?.country
+
+  if (!country) {
+    return NextResponse.json({ error: 'Missing country parameter' }, { status: 400 })
+  }
 
   try {
     const res = await fetch(`https://restcountries.com/v3.1/name/${country}`)
