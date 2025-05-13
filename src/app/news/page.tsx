@@ -61,7 +61,7 @@ export default function NewsPage() {
       <h1 className="text-4xl font-bold text-center mb-10">📰 World News</h1>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {mockArticles.map((article, index) => (
+        {mockArticles.map((article: Article, index) => (
           <article
             key={index}
             className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden flex flex-col"
