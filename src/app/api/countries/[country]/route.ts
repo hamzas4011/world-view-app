@@ -1,22 +1,27 @@
 import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
 export async function GET(
-  req: Request,
-  { params }: { params: { country: string } }
+  req: NextRequest,
+  context: { params: { country: string } }
 ) {
   try {
-    const res = await fetch(`https://restcountries.com/v3.1/name/${params.country}`)
+    const { country } = context.params
+    const res = await fetch(`https://restcountries.com/v3.1/name/${country}`)
 
     if (!res.ok) {
-      return new NextResponse('Failed to fetch country', { status: 500 })
+      return NextResponse.json(
+        { error: 'Failed to fetch country' },
+        { status: 500 }
+      )
     }
 
     const data = await res.json()
-    const country = data[0] // Take the first result
+    const countryData = data[0] // take the first match
 
-    return NextResponse.json(country)
+    return NextResponse.json(countryData)
   } catch (error) {
     console.error('API error:', error)
-    return new NextResponse('Server error', { status: 500 })
+    return NextResponse.json({ error: 'Server error' }, { status: 500 })
   }
 }
