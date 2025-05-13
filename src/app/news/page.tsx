@@ -11,47 +11,47 @@ const mockArticles: Article[] = [
   {
     title: 'Earth Day Celebrated Globally',
     pubDate: '2025-04-22T09:00:00Z',
-    image: '/images/news1.jpg',
+    image: '/images/earth.jpg',
   },
   {
     title: 'Space Elevator Opens in Asia',
     pubDate: '2025-04-18T14:30:00Z',
-    image: '/images/news2.jpg',
+    image: '/images/space.jpg',
   },
   {
     title: 'AI Becomes Tech Minister',
     pubDate: '2025-04-20T12:15:00Z',
-    image: '/images/news3.jpg',
+    image: '/images/ai.jpg',
   },
   {
     title: 'Underwater Cities Announced',
     pubDate: '2025-04-25T11:00:00Z',
-    image: '/images/news4.jpg',
+    image: '/images/city.jpg',
   },
   {
     title: 'Green Energy Hits 95%',
     pubDate: '2025-04-24T10:00:00Z',
-    image: '/images/news5.jpg',
+    image: '/images/green-energy.jpg',
   },
   {
     title: 'UN Recognizes Island Nation',
     pubDate: '2025-04-21T17:45:00Z',
-    image: '/images/news6.jpg',
+    image: '/images/un.jpg',
   },
   {
     title: 'Moon Internet Now Live',
     pubDate: '2025-04-23T08:00:00Z',
-    image: '/images/news7.jpg',
+    image: '/images/internet.jpg',
   },
   {
     title: 'Global Gaming Event Announced',
     pubDate: '2025-04-19T15:00:00Z',
-    image: '/images/news8.jpg',
+    image: '/images/gaming.jpg',
   },
   {
     title: 'Maglev Train Breaks Record',
     pubDate: '2025-04-26T13:20:00Z',
-    image: '/images/news9.jpg',
+    image: '/images/train.jpg',
   },
 ]
 
