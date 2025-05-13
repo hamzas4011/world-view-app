@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(
   req: NextRequest,
-  context: any // ← fallback if needed
+  context: any
 ) {
   const country = context?.params?.country
 
   if (!country) {
-    return NextResponse.json({ error: 'Missing country param' }, { status: 400 })
+    return NextResponse.json({ error: 'Missing country parameter' }, { status: 400 })
   }
 
   try {
