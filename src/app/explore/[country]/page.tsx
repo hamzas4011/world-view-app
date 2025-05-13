@@ -14,11 +14,7 @@ type CountryData = {
   timezones: string[]
 }
 
-export default async function CountryPage({
-  params,
-}: {
-  params: { country: string }
-}) {
+export default async function CountryPage({ params }: { params: { country: string } }) {
   const res = await fetch(`https://restcountries.com/v3.1/name/${params.country}`, {
     cache: 'no-store',
   })
