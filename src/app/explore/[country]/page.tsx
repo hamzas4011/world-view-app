@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -16,7 +14,6 @@ type CountryData = {
   timezones: string[]
 }
 
-// ✅ We avoid defining a separate Props type to prevent Next.js 15 issues
 export default async function CountryPage({
   params,
 }: {
@@ -34,7 +31,6 @@ export default async function CountryPage({
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-12">
-      {/* Back to Explore Button */}
       <Link
         href="/explore"
         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-medium shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition-all duration-150 mb-6 w-fit"
@@ -57,13 +53,11 @@ export default async function CountryPage({
         Back to Explore
       </Link>
 
-      {/* Header */}
       <div className="text-center mb-10">
         <h1 className="text-4xl font-extrabold">{country.name.common}</h1>
         <p className="text-gray-600 text-lg mt-2">{country.name.official}</p>
       </div>
 
-      {/* Flag */}
       <div className="flex justify-center mb-10">
         <img
           src={country.flags.png}
@@ -72,7 +66,6 @@ export default async function CountryPage({
         />
       </div>
 
-      {/* Country Info Grid */}
       <div className="bg-white rounded-xl shadow-md p-6 grid gap-4 sm:grid-cols-2 text-gray-800">
         <div>
           <h2 className="font-semibold text-lg mb-1">Capital</h2>
