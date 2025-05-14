@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -14,6 +16,7 @@ type CountryData = {
   timezones: string[]
 }
 
+// ✅ We avoid defining a separate Props type to prevent Next.js 15 issues
 export default async function CountryPage({
   params,
 }: {
