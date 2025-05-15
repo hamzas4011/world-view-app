@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-export const dynamic = 'force-dynamic' // allows fetch without static errors
+export const dynamic = 'force-dynamic'
 
 type CountryData = {
   name: { common: string; official: string }
@@ -16,8 +16,11 @@ type CountryData = {
   timezones: string[]
 }
 
-// ✅ DON’T define your own Props type or import PageProps
-export default async function CountryPage({ params }: any) {
+export default async function CountryPage({
+  params,
+}: {
+  params: { country: string }
+}) {
   const res = await fetch(
     `https://restcountries.com/v3.1/name/${params.country}`,
     { cache: 'no-store' }
@@ -42,7 +45,12 @@ export default async function CountryPage({ params }: any) {
           stroke="currentColor"
           aria-hidden="true"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M15 19l-7-7 7-7"
+          />
         </svg>
         Back to Explore
       </Link>
