@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic' // allow dynamic fetch
 
 type CountryData = {
   name: { common: string; official: string }
@@ -21,10 +21,9 @@ export default async function CountryPage({
 }: {
   params: { country: string }
 }) {
-  const res = await fetch(
-    `https://restcountries.com/v3.1/name/${params.country}`,
-    { cache: 'no-store' }
-  )
+  const res = await fetch(`https://restcountries.com/v3.1/name/${params.country}`, {
+    cache: 'no-store',
+  })
 
   if (!res.ok) return notFound()
 
@@ -45,12 +44,7 @@ export default async function CountryPage({
           stroke="currentColor"
           aria-hidden="true"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
         Back to Explore
       </Link>
