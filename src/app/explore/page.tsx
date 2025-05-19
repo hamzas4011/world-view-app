@@ -48,7 +48,6 @@ export default function ExplorePage() {
     <main className="p-6 max-w-6xl mx-auto">
       <h1 className="text-3xl font-bold mb-6 text-center">🌍 Explore All Countries</h1>
 
-      {/* 🔍 Search bar */}
       <div className="mb-6">
         <input
           type="text"
@@ -59,7 +58,6 @@ export default function ExplorePage() {
         />
       </div>
 
-      {/* Country cards */}
       {filtered.length === 0 ? (
         <p className="text-center text-gray-500">No countries found.</p>
       ) : (
