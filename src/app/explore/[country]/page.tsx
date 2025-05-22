@@ -1,3 +1,5 @@
+// src/app/explore/[country]/page.tsx
+
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
@@ -17,13 +19,17 @@ type CountryData = {
   timezones: string[]
 }
 
-type Props = {
-  params: { country: string }
+interface CountryPageProps {
+  params: {
+    country: string
+  }
 }
 
-export default async function CountryPage({ params }: Props) {
-  const countryName = params.country
+export default function CountryPage({ params }: CountryPageProps) {
+  return <CountryInfo countryName={params.country} />
+}
 
+async function CountryInfo({ countryName }: { countryName: string }) {
   const res = await fetch(
     `https://restcountries.com/v3.1/name/${encodeURIComponent(countryName)}?fullText=true`,
     { cache: 'no-store' }
