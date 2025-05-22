@@ -19,9 +19,9 @@ type CountryData = {
 
 export async function generateStaticParams() {
   const res = await fetch('https://restcountries.com/v3.1/all')
-  const countries = await res.json()
+  const countries: CountryData[] = await res.json()
 
-  return countries.map((country: any) => ({
+  return countries.map((country) => ({
     country: country.name.common,
   }))
 }
@@ -38,10 +38,10 @@ export default async function CountryPage({
 
   if (!res.ok) return notFound()
 
-  const data = await res.json()
+  const data: CountryData[] = await res.json()
   if (!data || !data[0]) return notFound()
 
-  const country: CountryData = data[0]
+  const country = data[0]
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-12">
