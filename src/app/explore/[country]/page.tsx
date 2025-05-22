@@ -1,6 +1,6 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
-import Link from 'next/link'
 
 export const dynamicParams = true
 
@@ -39,6 +39,8 @@ export default async function CountryPage({
   if (!res.ok) return notFound()
 
   const data = await res.json()
+  if (!data || !data[0]) return notFound()
+
   const country: CountryData = data[0]
 
   return (
@@ -80,7 +82,10 @@ export default async function CountryPage({
         <Info title="Subregion" value={country.subregion} />
         <Info title="Population" value={country.population.toLocaleString()} />
         <Info title="Area" value={`${country.area.toLocaleString()} km²`} />
-        <Info title="Languages" value={country.languages ? Object.values(country.languages).join(', ') : 'N/A'} />
+        <Info
+          title="Languages"
+          value={country.languages ? Object.values(country.languages).join(', ') : 'N/A'}
+        />
         <Info
           title="Currencies"
           value={
