@@ -17,30 +17,21 @@ type CountryData = {
   timezones: string[]
 }
 
-export async function generateStaticParams() {
-  const res = await fetch('https://restcountries.com/v3.1/all')
-  const countries: CountryData[] = await res.json()
-
-  return countries.map((country) => ({
-    country: country.name.common,
-  }))
+type Props = {
+  params: { country: string }
 }
 
-export default async function CountryPage({
-  params,
-}: {
-  params: { country: string }
-}) {
+export default async function CountryPage({ params }: Props) {
+  const countryName = params.country
+
   const res = await fetch(
-    `https://restcountries.com/v3.1/name/${encodeURIComponent(params.country)}?fullText=true`,
+    `https://restcountries.com/v3.1/name/${encodeURIComponent(countryName)}?fullText=true`,
     { cache: 'no-store' }
   )
 
   if (!res.ok) return notFound()
 
   const data: CountryData[] = await res.json()
-  if (!data || !data[0]) return notFound()
-
   const country = data[0]
 
   return (
