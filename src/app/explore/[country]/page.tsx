@@ -18,19 +18,21 @@ type CountryData = {
 }
 
 export default async function CountryPage({
-  params,
+  params: { country: countryName },
 }: {
   params: { country: string }
 }) {
-  const countryName = params.country
-
-  const res = await fetch(`https://restcountries.com/v3.1/name/${countryName}`, {
-    cache: 'no-store',
-  })
+  const res = await fetch(
+    `https://restcountries.com/v3.1/name/${encodeURIComponent(countryName)}`,
+    { cache: 'no-store' }
+  )
 
   if (!res.ok) return notFound()
 
   const data = await res.json()
+
+  if (!data || !Array.isArray(data) || !data[0]) return notFound()
+
   const country: CountryData = data[0]
 
   return (
@@ -68,14 +70,44 @@ export default async function CountryPage({
       </div>
 
       <div className="bg-white rounded-xl shadow-md p-6 grid gap-4 sm:grid-cols-2 text-gray-800">
-        <div><h2 className="font-semibold text-lg mb-1">Capital</h2><p>{country.capital?.join(', ') || 'N/A'}</p></div>
-        <div><h2 className="font-semibold text-lg mb-1">Region</h2><p>{country.region}</p></div>
-        <div><h2 className="font-semibold text-lg mb-1">Subregion</h2><p>{country.subregion || 'N/A'}</p></div>
-        <div><h2 className="font-semibold text-lg mb-1">Population</h2><p>{country.population.toLocaleString()}</p></div>
-        <div><h2 className="font-semibold text-lg mb-1">Area</h2><p>{country.area.toLocaleString()} km²</p></div>
-        <div><h2 className="font-semibold text-lg mb-1">Languages</h2><p>{country.languages ? Object.values(country.languages).join(', ') : 'N/A'}</p></div>
-        <div><h2 className="font-semibold text-lg mb-1">Currencies</h2><p>{country.currencies ? Object.values(country.currencies).map((c) => `${c.name} (${c.symbol})`).join(', ') : 'N/A'}</p></div>
-        <div><h2 className="font-semibold text-lg mb-1">Timezones</h2><p>{country.timezones.join(', ')}</p></div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Capital</h2>
+          <p>{country.capital?.join(', ') || 'N/A'}</p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Region</h2>
+          <p>{country.region}</p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Subregion</h2>
+          <p>{country.subregion || 'N/A'}</p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Population</h2>
+          <p>{country.population.toLocaleString()}</p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Area</h2>
+          <p>{country.area.toLocaleString()} km²</p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Languages</h2>
+          <p>{country.languages ? Object.values(country.languages).join(', ') : 'N/A'}</p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Currencies</h2>
+          <p>
+            {country.currencies
+              ? Object.values(country.currencies)
+                  .map((c) => `${c.name} (${c.symbol})`)
+                  .join(', ')
+              : 'N/A'}
+          </p>
+        </div>
+        <div>
+          <h2 className="font-semibold text-lg mb-1">Timezones</h2>
+          <p>{country.timezones.join(', ')}</p>
+        </div>
       </div>
     </main>
   )
