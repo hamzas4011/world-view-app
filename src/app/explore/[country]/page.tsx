@@ -17,16 +17,14 @@ type CountryData = {
   timezones: string[]
 }
 
-interface Props {
-  params: {
-    country: string
-  }
-}
+export default async function CountryPage({
+  params,
+}: {
+  params: { country: string }
+}) {
+  const countryName = params.country
 
-export default async function CountryPage(props: Props) {
-  const countryCode = props.params.country
-
-  const res = await fetch(`https://restcountries.com/v3.1/name/${countryCode}`, {
+  const res = await fetch(`https://restcountries.com/v3.1/name/${countryName}`, {
     cache: 'no-store',
   })
 
@@ -92,11 +90,7 @@ export default async function CountryPage(props: Props) {
         </div>
         <div>
           <h2 className="font-semibold text-lg mb-1">Languages</h2>
-          <p>
-            {country.languages
-              ? Object.values(country.languages).join(', ')
-              : 'N/A'}
-          </p>
+          <p>{country.languages ? Object.values(country.languages).join(', ') : 'N/A'}</p>
         </div>
         <div>
           <h2 className="font-semibold text-lg mb-1">Currencies</h2>
