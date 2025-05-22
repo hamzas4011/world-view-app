@@ -1,3 +1,4 @@
+import { PageProps } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
@@ -17,11 +18,7 @@ type CountryData = {
   timezones: string[]
 }
 
-export default async function CountryPage({
-  params,
-}: {
-  params: { country: string }
-}) {
+export default async function CountryPage({ params }: PageProps) {
   const countryName = params.country
 
   const res = await fetch(`https://restcountries.com/v3.1/name/${countryName}`, {
