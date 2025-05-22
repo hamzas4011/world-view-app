@@ -19,17 +19,14 @@ type CountryData = {
   timezones: string[]
 }
 
-interface CountryPageProps {
-  params: {
-    country: string
-  }
+// 👇 ✅ DO NOT export async function directly anymore
+// 👇 ✅ Instead, define the component inside and export the wrapper
+
+export default function CountryPage({ params }: { params: { country: string } }) {
+  return <CountryPageContent countryName={params.country} />
 }
 
-export default function CountryPage({ params }: CountryPageProps) {
-  return <CountryInfo countryName={params.country} />
-}
-
-async function CountryInfo({ countryName }: { countryName: string }) {
+async function CountryPageContent({ countryName }: { countryName: string }) {
   const res = await fetch(
     `https://restcountries.com/v3.1/name/${encodeURIComponent(countryName)}?fullText=true`,
     { cache: 'no-store' }
