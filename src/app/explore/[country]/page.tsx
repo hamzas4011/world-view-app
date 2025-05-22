@@ -19,23 +19,24 @@ type CountryData = {
   timezones: string[]
 }
 
-// 👇 ✅ DO NOT export async function directly anymore
-// 👇 ✅ Instead, define the component inside and export the wrapper
-
-export default function CountryPage({ params }: { params: { country: string } }) {
-  return <CountryPageContent countryName={params.country} />
+export default function Page({ params }: { params: { country: string } }) {
+  return <Client country={params.country} />
 }
 
-async function CountryPageContent({ countryName }: { countryName: string }) {
+function Client({ country }: { country: string }) {
+  return <AsyncCountryContent country={country} />
+}
+
+async function AsyncCountryContent({ country }: { country: string }) {
   const res = await fetch(
-    `https://restcountries.com/v3.1/name/${encodeURIComponent(countryName)}?fullText=true`,
+    `https://restcountries.com/v3.1/name/${encodeURIComponent(country)}?fullText=true`,
     { cache: 'no-store' }
   )
 
   if (!res.ok) return notFound()
 
   const data: CountryData[] = await res.json()
-  const country = data[0]
+  const countryData = data[0]
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-12">
@@ -56,14 +57,14 @@ async function CountryPageContent({ countryName }: { countryName: string }) {
       </Link>
 
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-extrabold">{country.name.common}</h1>
-        <p className="text-gray-600 text-lg mt-2">{country.name.official}</p>
+        <h1 className="text-4xl font-extrabold">{countryData.name.common}</h1>
+        <p className="text-gray-600 text-lg mt-2">{countryData.name.official}</p>
       </div>
 
       <div className="flex justify-center mb-10">
         <Image
-          src={country.flags.png}
-          alt={country.flags.alt || `${country.name.common} flag`}
+          src={countryData.flags.png}
+          alt={countryData.flags.alt || `${countryData.name.common} flag`}
           width={400}
           height={250}
           className="w-full max-w-md rounded-xl border shadow-sm object-cover"
@@ -71,26 +72,30 @@ async function CountryPageContent({ countryName }: { countryName: string }) {
       </div>
 
       <div className="bg-white rounded-xl shadow-md p-6 grid gap-4 sm:grid-cols-2 text-gray-800">
-        <Info title="Capital" value={country.capital?.join(', ')} />
-        <Info title="Region" value={country.region} />
-        <Info title="Subregion" value={country.subregion} />
-        <Info title="Population" value={country.population.toLocaleString()} />
-        <Info title="Area" value={`${country.area.toLocaleString()} km²`} />
+        <Info title="Capital" value={countryData.capital?.join(', ')} />
+        <Info title="Region" value={countryData.region} />
+        <Info title="Subregion" value={countryData.subregion} />
+        <Info title="Population" value={countryData.population.toLocaleString()} />
+        <Info title="Area" value={`${countryData.area.toLocaleString()} km²`} />
         <Info
           title="Languages"
-          value={country.languages ? Object.values(country.languages).join(', ') : 'N/A'}
+          value={
+            countryData.languages
+              ? Object.values(countryData.languages).join(', ')
+              : 'N/A'
+          }
         />
         <Info
           title="Currencies"
           value={
-            country.currencies
-              ? Object.values(country.currencies)
+            countryData.currencies
+              ? Object.values(countryData.currencies)
                   .map((c) => `${c.name} (${c.symbol})`)
                   .join(', ')
               : 'N/A'
           }
         />
-        <Info title="Timezones" value={country.timezones.join(', ')} />
+        <Info title="Timezones" value={countryData.timezones.join(', ')} />
       </div>
     </main>
   )
