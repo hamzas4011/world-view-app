@@ -20,7 +20,7 @@ type CountryData = {
 }
 
 export default async function Page({ params }: { params: { country: string } }) {
-  return <AsyncCountryContent country={params.country} />
+  return await AsyncCountryContent({ country: params.country });
 }
 
 async function AsyncCountryContent({ country }: { country: string }) {
