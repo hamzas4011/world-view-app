@@ -19,8 +19,8 @@ type CountryData = {
   timezones: string[]
 }
 
-export default async function Page({ params }: { params: { country: string } }) {
-  return await AsyncCountryContent({ country: params.country });
+export default async function Page({ params }: { params: { countryname: string } }) {
+  return await AsyncCountryContent({ country: params.countryname });
 }
 
 async function AsyncCountryContent({ country }: { country: string }) {

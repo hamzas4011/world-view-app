@@ -38,8 +38,8 @@ export default function ExplorePage() {
 
   // Handle live search
   useEffect(() => {
-    const filteredData = countries.filter((country) =>
-      country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredData = countries.filter((countryname) =>
+      countryname.name.common.toLowerCase().includes(searchTerm.toLowerCase())
     )
     setFiltered(filteredData)
   }, [searchTerm, countries])
